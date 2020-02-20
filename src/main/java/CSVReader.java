@@ -9,7 +9,7 @@ public class CSVReader<T> {
 
     public List<T> read(String filename, CSVMapper csvMapper) throws FileNotFoundException, IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
-        ArrayList<T> lines = new ArrayList<T>(); 
+        ArrayList<T> lines = new ArrayList<T>();
         String line = null;
         while ((line = bufferedReader.readLine()) != null) {
             lines.add(line);
