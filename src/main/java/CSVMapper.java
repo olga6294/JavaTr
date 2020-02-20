@@ -1,2 +1,2 @@
-public class CSVMapper {
+public class CSVMapper<T> {
 }

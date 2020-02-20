@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CSVReader<T> {
 
-    public List<T> read(String filename, CSVMapper csvMapper) throws FileNotFoundException, IOException {
+    public <T> List<T> read(String filename, CSVMapper<T> csvMapper) throws FileNotFoundException, IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
         ArrayList<T> lines = new ArrayList<T>();
         String line = null;
