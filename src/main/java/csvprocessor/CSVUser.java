@@ -1,3 +1,5 @@
+package csvprocessor;
+
 public class CSVUser {
 
     @Override

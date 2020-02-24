@@ -1,30 +1,26 @@
 package csvprocessor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CSVLine{
 
-    private List<String> line = new ArrayList<String>();
+    private List<String> csvLine = new ArrayList<String>();
 
-    @Override
-    public boolean equals(Object object){
-        if(this.hashCode()==object.hashCode())
-            return true;
-        return false;
-    }
-
-    @Override
-    public int hashCode(){
-        return -1;
-    }
-
-    public void add(String line){
+    public CSVLine(String line){
         String[] values = line.split(",");
-        for(String value : values){
-            this.line.add(value);
+        List<String> csvLine = new ArrayList<String>();
+        for(String value: values){
+            csvLine.add(value);
         }
+    }
+
+    public boolean equals(CSVLine line){
+        int index = 0;
+        while(index<csvLine.size()){
+            if(csvLine.get(index)!=csvLine.get(index))
+                continue;
+            return true;
+        }
+        return false;
     }
 }

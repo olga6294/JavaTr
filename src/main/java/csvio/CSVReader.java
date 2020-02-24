@@ -12,7 +12,12 @@ import java.util.List;
 
 public class CSVReader<T> {
 
-    public static <T> List<T> read(String filename, CSVMapper<T> csvMapper) throws FileNotFoundException, IOException {
+    public static <T> List<T> read(String filename, CSVMapper<T> csvMapper){
+
+        return new ArrayList<T>();
+    }
+
+    public static List<String> read(String filename) throws FileNotFoundException, IOException{
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
         ArrayList<String> lines = new ArrayList<String>();
         String line = null;
@@ -20,6 +25,6 @@ public class CSVReader<T> {
             lines.add(line);
         }
         bufferedReader.close();
-        return csvMapper.cvsMap(lines);
+        return lines;
     }
 }
