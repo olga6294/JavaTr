@@ -1,3 +1,8 @@
+package csvio;
+
+import csvprocessor.CSVLine;
+import csvprocessor.CSVMapper;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -7,14 +12,14 @@ import java.util.List;
 
 public class CSVReader<T> {
 
-    public <T> List<T> read(String filename, CSVMapper<T> csvMapper) throws FileNotFoundException, IOException {
+    public static <T> List<T> read(String filename, CSVMapper<T> csvMapper) throws FileNotFoundException, IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
-        ArrayList<T> lines = new ArrayList<T>();
+        ArrayList<String> lines = new ArrayList<String>();
         String line = null;
         while ((line = bufferedReader.readLine()) != null) {
             lines.add(line);
         }
         bufferedReader.close();
-        return lines;
+        return csvMapper.cvsMap(lines);
     }
 }
