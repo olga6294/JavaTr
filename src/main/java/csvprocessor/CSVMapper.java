@@ -3,16 +3,13 @@ package csvprocessor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVMapper<T> {
+public class CSVMapper{
 
-    public <T> List<T> cvsMap(List<T> values){
-
-        List<T> csvLines =  new ArrayList<T>();
-
-        for(T value: values){
-            csvLines.add(new CSVLine(value));
+    public List<CSVLine> cvsMap(List<String> lines){
+        List<CSVLine> csvLines = new ArrayList<>();
+        for(String line : lines){
+            csvLines.add(new CSVLine(line));
         }
-
         return csvLines;
     }
 }

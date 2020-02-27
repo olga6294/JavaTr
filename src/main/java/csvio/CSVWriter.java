@@ -19,7 +19,6 @@ public class CSVWriter<T> {
             fileWriter.close();
             index++;
         }
-
     }
 
     private List<T> getSubset(List<T> sublist, int index){
@@ -30,6 +29,6 @@ public class CSVWriter<T> {
         if(start>end)
             return null;
 
-        return list.subList(start, end);
+        return sublist.subList(start, end);
     }
 }

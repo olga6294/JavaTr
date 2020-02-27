@@ -2,15 +2,19 @@ package csvprocessor;
 
 import java.util.HashSet;
 
-public class CSVService {
+public class CSVService<T> {
 
-    private HashSet<CSVLine> hashSet;
+    private HashSet<T> hashSet;
 
     public CSVService(){
-        hashSet = new HashSet<CSVLine>();
+        hashSet = new HashSet<T>();
     }
 
-    public void add(CSVLine csvLine){
-        hashSet.add(csvLine);
+    public void add(T element){
+        hashSet.add(element);
+    }
+
+    public HashSet<T> getHashSet(){
+        return hashSet;
     }
 }

@@ -1,26 +1,36 @@
 package csvprocessor;
 
-import java.util.*;
-
 public class CSVLine{
 
-    private List<String> csvLine = new ArrayList<String>();
+    private final String[] values;
 
     public CSVLine(String line){
-        String[] values = line.split(",");
-        List<String> csvLine = new ArrayList<String>();
-        for(String value: values){
-            csvLine.add(value);
-        }
+        values = line.split(",");
     }
 
-    public boolean equals(CSVLine line){
-        int index = 0;
-        while(index<csvLine.size()){
-            if(csvLine.get(index)!=csvLine.get(index))
-                continue;
+    public String[] getValues(){
+        return values;
+    }
+
+    @Override
+    public boolean equals(Object object){
+        if(this == object)
             return true;
+        if(object == null || getClass() !=  object.getClass())
+            return false;
+
+        int elementIndex = 0;
+
+        while(elementIndex<values.length){
+            if(values[elementIndex] == ((CSVLine) object).values[elementIndex]) {
+                return false;
+            }
         }
-        return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode(){
+        return -1;
     }
 }

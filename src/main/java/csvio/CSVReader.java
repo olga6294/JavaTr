@@ -12,15 +12,15 @@ import java.util.List;
 
 public class CSVReader<T> {
 
-    public static <T> List<T> read(String filename, CSVMapper<T> csvMapper){
-
-        return new ArrayList<T>();
+    public static List<CSVLine> read(List<String> lines, CSVMapper csvMapper){
+        List<CSVLine> lineObjects = csvMapper.cvsMap(lines);
+        return lineObjects;
     }
 
     public static List<String> read(String filename) throws FileNotFoundException, IOException{
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
-        ArrayList<String> lines = new ArrayList<String>();
         String line = null;
+        List<String> lines = new ArrayList<String>();
         while ((line = bufferedReader.readLine()) != null) {
             lines.add(line);
         }
