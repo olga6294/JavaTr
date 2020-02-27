@@ -1,4 +1,4 @@
-package csvio;
+package csvprocessor;
 
 import csvprocessor.CSVLine;
 import csvprocessor.CSVMapper;
