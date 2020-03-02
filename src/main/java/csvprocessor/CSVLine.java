@@ -1,5 +1,7 @@
 package csvprocessor;
 
+import java.util.Objects;
+
 public class CSVLine{
 
     private final String[] values;
@@ -21,16 +23,21 @@ public class CSVLine{
 
         int elementIndex = 0;
 
-        while(elementIndex<values.length){
-            if(values[elementIndex] == ((CSVLine) object).values[elementIndex]) {
-                return false;
+        try {
+
+            while (elementIndex < values.length) {
+                if (values[elementIndex].equals(((CSVLine) object).values[elementIndex]))
+                    return true;
+                elementIndex++;
             }
+        }catch(ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException){
+            return false; //jak dwie linie są różnej długości i nie mają ani jednego takiego samego pola to nie mogą być takie same
         }
-        return true;
+        return false;
     }
 
     @Override
     public int hashCode(){
-        return -1;
+        return 832927;
     }
 }

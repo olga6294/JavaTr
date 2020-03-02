@@ -1,12 +1,11 @@
 package csvio;
 
-import csvprocessor.CSVLine;
-import csvprocessor.CSVMapper;
-import csvprocessor.CSVReader;
-import csvprocessor.CSVService;
+import csvprocessor.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -17,14 +16,27 @@ public class CSVMain {
         try {
             List<String> lines = CSVReader.read("src/resources/TestFile.csv");
             List<CSVLine> csvLines = CSVReader.read(lines, new CSVMapper());
-            CSVService<CSVLine> csvService = new CSVService<>();
 
-            for(CSVLine line: csvLines){
-                csvService.add(line);
+            CSVService<CSVLine> csvServiceLine = new CSVService<>();
+
+            for(CSVLine line : csvLines){
+                //for(int i=0; i<line.getValues().length; i++)
+                    //System.out.print(line.getValues()[i]+" ");
+                //System.out.println();
+                csvServiceLine.add(line);
+            }
+            //System.out.println(csvServiceLine.getHashSet().size());
+
+            List<String> csvServiceLines = new ArrayList<>();
+
+            for(CSVLine csvHashSetElement : csvServiceLine.getHashSet()){
+                csvServiceLines.add(Arrays.toString(csvHashSetElement.getValues()));
             }
 
-            HashSet<CSVLine> hashSetLines = csvService.getHashSet();
-            System.out.println(hashSetLines);
+            CSVWriter<CSVLine> csvLineCSVWriter = new CSVWriter<>();
+
+            csvLineCSVWriter.write(csvServiceLines);
+
         }catch(FileNotFoundException fileNotFoundException){
             fileNotFoundException.printStackTrace();
         }catch (IOException ioException){

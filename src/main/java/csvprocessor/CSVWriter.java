@@ -18,7 +18,7 @@ public class CSVWriter<T> {
             File file = new File("src/output/file"+index+".txt");
             file.createNewFile();
             FileWriter fileWriter = new FileWriter(file);
-            for(Object value: csvListDivider.getSubset(list, index))
+            for(T value: csvListDivider.getSubset(list, index))
                 fileWriter.write(value.toString()+"\n");
             fileWriter.close();
             index++;
